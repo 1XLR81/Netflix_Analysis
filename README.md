@@ -4,7 +4,7 @@
 This project analyzes Netflix's shows and movies dataset to extract meaningful insights for subscribers. Using SQL and MySQL, the project uncovers trends in viewer ratings, popularity, genre preferences, and content distribution across decades and age certifications. The analysis addresses Netflix's challenge of handling large datasets to provide actionable insights for content recommendations and audience preferences.
 
 ## Business Problem
-Netflix aims to derive valuable insights from their extensive shows and movies dataset to enhance subscriber experience. With approximately 82,000 rows of data, the challenge lies in effectively analyzing this vast dataset to uncover patterns and trends. The goal is to provide a scalable data analytics solution to identify viewer preferences, content performance, and strategic opportunities for content curation.
+Netflix aims to derive valuable insights from their extensive shows and movies dataset to enhance subscriber experience. With vast data, the challenge lies in effectively analyzing this vast dataset to uncover patterns and trends. The goal is to provide a scalable data analytics solution to identify viewer preferences, content performance, and strategic opportunities for content curation.
 
 ## Datasets Used
 ![DATASET]((https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies?select=titles.csv))
@@ -56,16 +56,16 @@ This project addresses the following key questions to uncover insights from the 
   ORDER BY imdb_score ASC
   LIMIT 10
 """
-  ```
-  **Result**: [Q3 - Placeholder for results]
-
+  ```-**Result**: [Q3 - Placeholder for results]
 -**Bottom 10 Shows**:
   ```sql
-  SELECT title, type, imdb_score
-  FROM shows_movies.titles
-  WHERE type = 'SHOW'
-  ORDER BY imdb_score ASC
-  LIMIT 10;
+  SELECT title, 
+type, 
+imdb_score
+FROM Netflix_data
+WHERE type = 'SHOW'
+ORDER BY imdb_score ASC
+LIMIT 10
   ```
   **Result**: [Q4 - Placeholder for results]
 
@@ -76,8 +76,8 @@ This project addresses the following key questions to uncover insights from the 
 
 ```sql
 SELECT CONCAT(FLOOR(release_year / 10) * 10, 's') AS decade,
-       COUNT(*) AS movies_shows_count
-FROM shows_movies.titles
+	COUNT(*) AS movies_shows_count
+FROM Netflix_data
 WHERE release_year >= 1940
 GROUP BY CONCAT(FLOOR(release_year / 10) * 10, 's')
 ORDER BY decade;
@@ -91,21 +91,21 @@ ORDER BY decade;
 
 - **Average Scores by Age Certification**:
   ```sql
-  SELECT DISTINCT age_certification, 
-         ROUND(AVG(imdb_score),2) AS avg_imdb_score,
-         ROUND(AVG(tmdb_score),2) AS avg_tmdb_score
-  FROM shows_movies.titles
+  SELECT DISTINCT age_certification,
+  ROUND(AVG(imdb_score),2) AS avg_imdb_score,
+  ROUND(AVG(tmdb_score),2) AS avg_tmdb_score
+  FROM Netflix_data
   GROUP BY age_certification
-  ORDER BY avg_imdb_score DESC;
+  ORDER BY avg_imdb_score DESC
   ```
   **Result**: [Q6 - Placeholder for results]
 
 - **Distribution of Age Certifications for Movies**:
   ```sql
-  SELECT age_certification, 
-         COUNT(*) AS certification_count
-  FROM shows_movies.titles
-  WHERE type = 'Movie' 
+  SELECT age_certification,
+  COUNT(*) AS certification_count
+  FROM Netflix_data
+  WHERE type = 'MOVIE'
   AND age_certification != 'N/A'
   GROUP BY age_certification
   ORDER BY certification_count DESC
@@ -113,17 +113,19 @@ ORDER BY decade;
   ```
   **Result**: [Q7 - Placeholder for results]
 
-**Insights**: TV-14 content has the highest average IMDB score (6.71), indicating strong viewer preference. R-rated titles are the most prevalent (556 movies), followed by PG-13 (451). TV-G and TV-Y content also perform well, while NC-17 is least represented (16 titles). This highlights Netflix’s diverse content range catering to varied audiences.
+**Insights**: TV-14 content has the highest average IMDB score (7.17), indicating strong viewer preference. TV-MA	 titles are the most prevalent (2364 movies), followed by R- Rated (556). PG-13 and PG content also perform well, while NC-17 is least represented (16 titles). This highlights Netflix’s diverse content range catering to varied audiences.
+
+When examining the distribution of movies and shows across age certifications, the second query showcases the varying prevalence of different certifications within Netflix's dataset. R emerges as the most prevalent age certification, with 556 titles falling under this category. PG-13 closely follows with 451 titles, reflecting a significant number of movies and shows targeted at mature audiences. The age certification PG accounts for 233 titles, indicating a considerable selection suitable for general audiences. The dataset also includes 124 titles classified as G, which mostly caters to a younger audience. Lastly, the least represented certification is NC-17, with only 16 titles available. These findings highlight the diverse range of age certifications present in Netflix's movies and shows dataset and provide valuable insights into both audience preferences and content distribution. The higher average scores associated with TV-14, TV-MA, and TV-PG certifications suggest that content aligned with these age categories tends to resonate positively with viewers.
 
 ### 4. Most Common Genres
 **Objective**: Identify the most frequent genres for movies, shows, and overall to understand viewer preferences.
 
 - **Top 10 Genres for Movies**:
   ```sql
-  SELECT genres, 
-         COUNT(*) AS title_count
-  FROM shows_movies.titles 
-  WHERE type = 'Movie'
+  SELECT genres,
+  COUNT(*) AS title_count
+  FROM Netflix_data
+  WHERE type = 'MOVIE'
   GROUP BY genres
   ORDER BY title_count DESC
   LIMIT 10;
@@ -132,10 +134,10 @@ ORDER BY decade;
 
 - **Top 10 Genres for Shows**:
   ```sql
-  SELECT genres, 
-         COUNT(*) AS title_count
-  FROM shows_movies.titles 
-  WHERE type = 'Show'
+  SELECT genres,
+  COUNT(*) AS title_count
+  FROM Netflix_data
+  WHERE type = 'SHOW'
   GROUP BY genres
   ORDER BY title_count DESC
   LIMIT 10;
@@ -144,17 +146,21 @@ ORDER BY decade;
 
 - **Top 3 Genres Overall**:
   ```sql
-  SELECT t.genres, 
-         COUNT(*) AS genre_count
-  FROM shows_movies.titles AS t
-  WHERE t.type = 'Movie' or t.type = 'Show'
-  GROUP BY t.genres
-  ORDER BY genre_count DESC
+  SELECT genres,
+  COUNT(*) AS title_count
+  FROM Netflix_data
+  WHERE type = 'MOVIE' OR type='SHOW'
+  GROUP BY genres
+  ORDER BY title_count DESC
   LIMIT 3;
   ```
   **Result**: [Q10 - Placeholder for results]
 
-**Insights**: Comedy dominates with 484 titles, followed by documentation (329) and drama (328). Multi-genre combinations (e.g., comedy + drama) are also popular, reflecting Netflix’s diverse offerings. Reality and drama lead for shows, while comedy and documentation are prevalent for movies.
+**Insights**: By analyzing the frequency of genres, we can gain a better understanding of the content that dominates the platform and the preferences of its audience. Starting with movies, the first query reveals the top 10 most common genres. Comedy emerges as the most popular genre with a total of 384 movies, reflecting its widespread appeal. Following closely behind are documentation with 230 movies and drama with 224 movies, indicating the significance of these genres in Netflix's movie collection. Combinations of genres also feature prominently, with comedy + documentation and comedy + drama occupying the fourth and fifth positions respectively. The presence of drama + romance, drama + comedy, and comedy + romance further emphasizes the audience's likeness for movies that blend multiple genres. These findings highlight the diverse range of movie genres available on Netflix and the platform's commitment to catering to a wide array of preferences.
+
+Shifting the focus, the second query presents the top 10 most common genres for shows. Reality takes the lead with 113 shows, showcasing the popularity of this genre among Netflix viewers. Drama follows closely behind with 104 shows. Comedy and documentation also emerge as prevalent genres with 100 shows each. Similar to movies, combinations of genres such as comedy + drama and drama + romance are present, indicating viewer interest in multi-genre shows.
+
+Combining the results from both movies and shows, the third query provides an overview of the top three most common genres overall. Comedy takes the lead with a total of 484 entries, reaffirming its position as a very popular genre among Netflix subscribers. Documentation follows closely behind with 329 entries, reflecting the popularity of informative content. Finally, drama secures the third spot with 328 entries. Overall, these findings shed light on the genres that dominate Netflix's library, showcasing the platform's efforts to cater to a diverse range of viewer preferences.
 
 ## SQL Queries
 The SQL queries used in this analysis are included above with their respective questions. They leverage MySQL to filter, aggregate, and sort data, enabling insights into ratings, decades, certifications, and genres.
