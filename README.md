@@ -161,9 +161,9 @@ The SQL queries used in this analysis are included above with their respective q
 
 ## Conclusion
 This analysis provides a comprehensive view of Netflix’s content landscape:
-- **IMDB Scores**: Top-rated titles (scores ≥ 8.0) guide recommendations, while low-rated titles highlight areas for improvement.
+- **IMDB Scores**: Top-rated titles guide recommendations, while low-rated titles highlight areas for improvement.
 - **Decades**: A surge in content from the 2000s (3,304 titles in 2010s, 1,972 in 2020s) shows Netflix’s focus on modern content.
-- **Age Certifications**: TV-14 content scores highest (6.71), with R and PG-13 being most common, reflecting diverse audience appeal.
+- **Age Certifications**: TV-14 content scores highest (7.17), with TV-MA and R being most common, reflecting diverse audience appeal.
 - **Genres**: Comedy (484 titles), documentation (329), and drama (328) dominate, with multi-genre content also popular.
 
 These insights help Netflix understand viewer preferences, optimize content curation, and enhance subscriber experience. The project demonstrates the power of SQL for handling large datasets and extracting actionable trends.
