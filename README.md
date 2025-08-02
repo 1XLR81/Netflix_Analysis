@@ -7,7 +7,7 @@ This project analyzes Netflix's shows and movies dataset to extract meaningful i
 Netflix aims to derive valuable insights from their extensive shows and movies dataset to enhance subscriber experience. With vast data, the challenge lies in effectively analyzing this vast dataset to uncover patterns and trends. The goal is to provide a scalable data analytics solution to identify viewer preferences, content performance, and strategic opportunities for content curation.
 
 ## Datasets Used
-![DATASET]((https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies?select=titles.csv))
+DATASET: https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies?select=titles.csv
 
 
 ## Analysis and Findings
