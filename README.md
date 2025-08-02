@@ -9,14 +9,6 @@ Netflix aims to derive valuable insights from their extensive shows and movies d
 ## Datasets Used
 ![DATASET]((https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies?select=titles.csv))
 
-The dataset includes Netflix's shows and movies data, with approximately 82,000 rows, containing attributes such as:
-- Title
-- Type (Movie or Show)
-- IMDB Score
-- TMDB Score
-- Release Year
-- Age Certification
-- Genres
 
 ## Analysis and Findings
 This project addresses the following key questions to uncover insights from the Netflix dataset:
@@ -34,7 +26,7 @@ This project addresses the following key questions to uncover insights from the 
   ORDER BY imdb_score DESC
   LIMIT 10
   ```
-  **Result**: [Q1 - Placeholder for results]
+
 
 - **Top 10 Shows**:
   ```sql
@@ -45,7 +37,7 @@ This project addresses the following key questions to uncover insights from the 
   ORDER BY imdb_score DESC
   LIMIT 10
   ```
-  **Result**: [Q2 - Placeholder for results]
+ 
 
 - **Bottom 10 Movies**:
   ```sql
@@ -56,7 +48,7 @@ This project addresses the following key questions to uncover insights from the 
   ORDER BY imdb_score ASC
   LIMIT 10
 """
-  ```-**Result**: [Q3 - Placeholder for results]
+  ```
 -**Bottom 10 Shows**:
   ```sql
   SELECT title, 
@@ -67,9 +59,9 @@ WHERE type = 'SHOW'
 ORDER BY imdb_score ASC
 LIMIT 10
   ```
-  **Result**: [Q4 - Placeholder for results]
 
-**Insights**: The top 10 movies and shows, with IMDB scores ≥ 8.0, are highly regarded, indicating strong viewer approval. Conversely, the bottom 10 titles reveal lower audience reception, potentially due to factors like weak plots or production quality. These findings guide content recommendations and highlight areas for improvement.
+
+**Insights**: The top 10 movies and shows, with higher IMDB scores, are highly regarded, indicating strong viewer approval. Conversely, the bottom 10 titles reveal lower audience reception, potentially due to factors like weak plots or production quality. These findings guide content recommendations and highlight areas for improvement.
 
 ### 2. Distribution of Movies and Shows by Decade
 **Objective**: Analyze the number of titles per decade to understand Netflix’s content distribution over time.
@@ -82,7 +74,7 @@ WHERE release_year >= 1940
 GROUP BY CONCAT(FLOOR(release_year / 10) * 10, 's')
 ORDER BY decade;
 ```
-**Result**: [Q5 - Placeholder for results]
+
 
 **Insights**: The analysis shows a significant increase in content from the 2000s onward, with 3,304 titles in the 2010s and 1,972 in the 2020s (ongoing). Earlier decades (1940s–1980s) have fewer titles, while the 1990s mark a surge with 121 titles. This reflects Netflix’s focus on contemporary content aligned with current trends.
 
@@ -98,7 +90,7 @@ ORDER BY decade;
   GROUP BY age_certification
   ORDER BY avg_imdb_score DESC
   ```
-  **Result**: [Q6 - Placeholder for results]
+ 
 
 - **Distribution of Age Certifications for Movies**:
   ```sql
@@ -111,11 +103,13 @@ ORDER BY decade;
   ORDER BY certification_count DESC
   LIMIT 5;
   ```
-  **Result**: [Q7 - Placeholder for results]
+  
 
-**Insights**: TV-14 content has the highest average IMDB score (7.17), indicating strong viewer preference. TV-MA	 titles are the most prevalent (2364 movies), followed by R- Rated (556). PG-13 and PG content also perform well, while NC-17 is least represented (16 titles). This highlights Netflix’s diverse content range catering to varied audiences.
+**Insights**: TV-14 lead with the highest average IMDb and TMDb scores of 7.17, indicating strong viewer appreciation for content suitable for those aged 14 and older, likely due to its balance of mature themes and broad appeal. TV-PG and TV-Y7 follow with scores of 6.88 and 6.81, respectively, reflecting solid reception for family-friendly content, while TV-Y, TV-MA, PG-13, G, TV-G, R, and PG range from 6.54 to 6.24, showing varied but positive feedback. NC-17 titles score lowest at 6.17, likely due to their niche, mature nature.
 
-When examining the distribution of movies and shows across age certifications, the second query showcases the varying prevalence of different certifications within Netflix's dataset. R emerges as the most prevalent age certification, with 556 titles falling under this category. PG-13 closely follows with 451 titles, reflecting a significant number of movies and shows targeted at mature audiences. The age certification PG accounts for 233 titles, indicating a considerable selection suitable for general audiences. The dataset also includes 124 titles classified as G, which mostly caters to a younger audience. Lastly, the least represented certification is NC-17, with only 16 titles available. These findings highlight the diverse range of age certifications present in Netflix's movies and shows dataset and provide valuable insights into both audience preferences and content distribution. The higher average scores associated with TV-14, TV-MA, and TV-PG certifications suggest that content aligned with these age categories tends to resonate positively with viewers.
+When examining the distribution of movies and shows across age certifications,TV-MA dominates with 2,364 titles, underscoring Netflix’s focus on mature audiences, followed by R (556 titles) and PG-13 (451 titles), catering to teens and adults. PG (233 titles) and G (124 titles) provide family-friendly options, while NC-17 is least common with only 16 titles, reflecting its limited appeal. 
+
+These insights highlight Netflix’s strategy of prioritizing mature content while offering high-quality, broadly appealing titles, particularly for TV-14 and TV-PG audiences.
 
 ### 4. Most Common Genres
 **Objective**: Identify the most frequent genres for movies, shows, and overall to understand viewer preferences.
@@ -130,7 +124,7 @@ When examining the distribution of movies and shows across age certifications, t
   ORDER BY title_count DESC
   LIMIT 10;
   ```
-  **Result**: [Q8 - Placeholder for results]
+ 
 
 - **Top 10 Genres for Shows**:
   ```sql
@@ -142,7 +136,7 @@ When examining the distribution of movies and shows across age certifications, t
   ORDER BY title_count DESC
   LIMIT 10;
   ```
-  **Result**: [Q9 - Placeholder for results]
+  
 
 - **Top 3 Genres Overall**:
   ```sql
@@ -154,7 +148,7 @@ When examining the distribution of movies and shows across age certifications, t
   ORDER BY title_count DESC
   LIMIT 3;
   ```
-  **Result**: [Q10 - Placeholder for results]
+ 
 
 **Insights**: By analyzing the frequency of genres, we can gain a better understanding of the content that dominates the platform and the preferences of its audience. Starting with movies, the first query reveals the top 10 most common genres. Comedy emerges as the most popular genre with a total of 384 movies, reflecting its widespread appeal. Following closely behind are documentation with 230 movies and drama with 224 movies, indicating the significance of these genres in Netflix's movie collection. Combinations of genres also feature prominently, with comedy + documentation and comedy + drama occupying the fourth and fifth positions respectively. The presence of drama + romance, drama + comedy, and comedy + romance further emphasizes the audience's likeness for movies that blend multiple genres. These findings highlight the diverse range of movie genres available on Netflix and the platform's commitment to catering to a wide array of preferences.
 
@@ -174,50 +168,3 @@ This analysis provides a comprehensive view of Netflix’s content landscape:
 
 These insights help Netflix understand viewer preferences, optimize content curation, and enhance subscriber experience. The project demonstrates the power of SQL for handling large datasets and extracting actionable trends.
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/username/Netflix-SQL-Analysis.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd Netflix-SQL-Analysis
-   ```
-3. Set up MySQL:
-   - Install MySQL if not already installed.
-   - Import the dataset into MySQL (update with specific dataset import instructions if available).
-4. Install dependencies (if applicable):
-   ```bash
-   pip install -r requirements.txt
-   ```
-   *Note*: Update with specific dependencies if Excel or other tools require them.
-
-## Usage
-1. Run the SQL queries in MySQL Workbench or a similar environment.
-2. Use the provided `.sql` files (if included) or copy-paste queries from this README.
-3. Analyze results to derive insights or visualize using Excel or other tools.
-4. Example command to execute a query:
-   ```sql
-   mysql -u username -p shows_movies < query.sql
-   ```
-
-## Contributing
-Contributions are welcome! To contribute:
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make changes and commit (`git commit -m 'Add new feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a Pull Request.
-
-## License
-This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.
-
-## Contact
-For questions or support:
-- Email: your.email@example.com
-- GitHub: [Your GitHub Profile](https://github.com/username)
-- Project Issues: [GitHub Issues](https://github.com/username/Netflix-SQL-Analysis/issues)
-
-## Visual
-![Netflix Analysis Visualization](path/to/visualization.png)
-*Note*: Replace `path/to/visualization.png` with the actual path to your project’s visualization or screenshot.
