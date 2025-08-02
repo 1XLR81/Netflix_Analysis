@@ -64,11 +64,12 @@ LIMIT 10
 **Insights**: The top 10 movies and shows, with higher IMDB scores, are highly regarded, indicating strong viewer approval. Conversely, the bottom 10 titles reveal lower audience reception, potentially due to factors like weak plots or production quality. These findings guide content recommendations and highlight areas for improvement.
 
 ### 2. Distribution of Movies and Shows by Decade
-**Objective**: Analyze the number of titles per decade to understand Netflix’s content distribution over time.
+**Objective**: Analyze the number of titles and average runtime per decade to understand Netflix’s content distribution over time.
 
 ```sql
 SELECT CONCAT(FLOOR(release_year / 10) * 10, 's') AS decade,
-	COUNT(*) AS movies_shows_count
+	COUNT(*) AS movies_shows_count,
+    ROUND(AVG(runtime), 2) AS avg_durations_mins
 FROM Netflix_data
 WHERE release_year >= 1940
 GROUP BY CONCAT(FLOOR(release_year / 10) * 10, 's')
@@ -76,7 +77,9 @@ ORDER BY decade;
 ```
 
 
-**Insights**: The analysis shows a significant increase in content from the 2000s onward, with 3,304 titles in the 2010s and 1,972 in the 2020s (ongoing). Earlier decades (1940s–1980s) have fewer titles, while the 1990s mark a surge with 121 titles. This reflects Netflix’s focus on contemporary content aligned with current trends.
+**Insights**: Content Distribution:The analysis shows a significant increase in content from the 2000s onward, with 3,304 titles in the 2010s and 1,972 in the 2020s (ongoing). Earlier decades (1940s–1980s) have fewer titles, while the 1990s mark a surge with 121 titles. This reflects Netflix’s focus on contemporary content aligned with current trends.
+
+Average Runtime:Peaks at 129.75 minutes (1960s), stabilizes at 98–113 minutes (1970s–1990s), then drops to 92.27 (2000s), 76.30 (2010s), and 72.47 minutes (2020s), indicating a trend toward shorter content.
 
 ### 3. Impact of Age Certifications
 **Objective**: Examine how age certifications influence IMDB and TMDB scores and their distribution in the dataset.
