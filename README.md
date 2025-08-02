@@ -77,7 +77,8 @@ ORDER BY decade;
 ```
 
 
-**Insights**: Content Distribution:The analysis shows a significant increase in content from the 2000s onward, with 3,304 titles in the 2010s and 1,972 in the 2020s (ongoing). Earlier decades (1940s–1980s) have fewer titles, while the 1990s mark a surge with 121 titles. This reflects Netflix’s focus on contemporary content aligned with current trends.
+**Insights**: 
+Content Distribution:The analysis shows a significant increase in content from the 2000s onward, with 3,304 titles in the 2010s and 1,972 in the 2020s (ongoing). Earlier decades (1940s–1980s) have fewer titles, while the 1990s mark a surge with 121 titles. This reflects Netflix’s focus on contemporary content aligned with current trends.
 
 Average Runtime:Peaks at 129.75 minutes (1960s), stabilizes at 98–113 minutes (1970s–1990s), then drops to 92.27 (2000s), 76.30 (2010s), and 72.47 minutes (2020s), indicating a trend toward shorter content.
 
